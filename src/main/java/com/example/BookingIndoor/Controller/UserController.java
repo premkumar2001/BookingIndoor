@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -39,4 +40,11 @@ public class UserController {
         }*/
         return new ResponseEntity<>(allGrounds, HttpStatus.OK);
     }
+
+    @GetMapping("/groundById/{id}")
+    public ResponseEntity<Optional<GroundModel>> findGround(@PathVariable(value="id") Long id){
+        Optional<GroundModel> ground=serv.finByGroundId(id);
+        return new ResponseEntity<>(ground,HttpStatus.OK);
+    }
+
 }

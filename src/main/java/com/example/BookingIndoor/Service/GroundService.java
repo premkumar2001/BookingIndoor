@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Configurable
@@ -31,5 +32,9 @@ public class GroundService {
     @Transactional
     public void deleteGround(Long id) {
         repo.deleteById(id);
+    }
+
+    public Optional<GroundModel> finByGroundId(Long id) {
+        return repo.findById(id);
     }
 }
