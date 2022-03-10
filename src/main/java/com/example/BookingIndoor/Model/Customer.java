@@ -6,31 +6,31 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
-public class CustomerModel implements UserDetails {
+public class Customer implements UserDetails {
 
-    private int id;
-    private String f_name;
-    private String l_name;
+    private Integer id;
+    private String name;
     private String mailId;
     private String mobNo;
     private String password;
+    private List<GrantedAuthority> authorities;
 
-    public CustomerModel(UserModel lm) {
-        this.id = lm.getId();
-        this.f_name = lm.getF_name();
-        this.l_name = lm.getL_name();
-        this.mailId = lm.getMailId();
-        this.mobNo = lm.getMobNo();
-        this.password = lm.getPassword();
-    }
-
-    public CustomerModel() {
+    public Customer(){}
+    public Customer(User am){
+        this.id=am.getId();
+        this.name=am.getName();
+        this.mailId= am.getMailId();
+        this.mobNo=am.getMobNo();
+        this.password= am.getPassword();
+        this.authorities=Arrays.stream(am.getRoles().split(",")).map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Arrays.asList(new SimpleGrantedAuthority("ROLE_USER"));
+        return authorities;
     }
 
     @Override

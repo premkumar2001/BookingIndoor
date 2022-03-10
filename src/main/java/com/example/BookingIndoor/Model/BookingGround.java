@@ -8,8 +8,9 @@ import java.util.Date;
 
 @Entity
 @Table(name="bookinggrounddetails")
-public class BookingGroundModel {
+public class BookingGround {
     @Id
+    //private int id;
     private String groundName;
     private String address;
     private String noOfPersons;
@@ -17,15 +18,15 @@ public class BookingGroundModel {
     private Date todate;
     private String totalPrice;
 
-    public BookingGroundModel() {
+    public BookingGround() {
     }
 
-    public BookingGroundModel(String groundName,
-                        String address,
-                        String noOfPersons,
-                        Date fromDate,
-                        Date todate,
-                        String totalPrice) {
+    public BookingGround(String groundName,
+                         String address,
+                         String noOfPersons,
+                         Date fromDate,
+                         Date todate,
+                         String totalPrice) {
         this.groundName = groundName;
         this.address = address;
         this.noOfPersons = noOfPersons;

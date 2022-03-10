@@ -1,7 +1,7 @@
 package com.example.BookingIndoor.Service;
 
-import com.example.BookingIndoor.Model.CustomerModel;
-import com.example.BookingIndoor.Model.UserModel;
+import com.example.BookingIndoor.Model.Customer;
+import com.example.BookingIndoor.Model.User;
 import com.example.BookingIndoor.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,8 +18,8 @@ public class CustomerService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<UserModel> lm=repo.findByMailId(s);
+        Optional<User> lm=repo.findByMailId(s);
         lm.orElseThrow(()->new UsernameNotFoundException("Not Found: "+s));
-        return lm.map(CustomerModel::new).get();
+        return lm.map(Customer::new).get();
     }
 }

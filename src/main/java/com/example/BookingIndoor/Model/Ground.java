@@ -8,9 +8,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="grounddetails")
-public class GroundModel {
+public class Ground {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private Long GroundId;
     private String GroundName;
     private String GroundImageURL;
@@ -19,16 +19,16 @@ public class GroundModel {
     private String groundAvailableStatus;
     private String price;
 
-    public GroundModel() {
+    public Ground() {
     }
 
-    public GroundModel(Long groundId,
-                       String groundName,
-                       String groundImageURL,
-                       String groundAddress,
-                       String groundDescription,
-                       String groundAvailableStatus,
-                       String price)
+    public Ground(Long groundId,
+                  String groundName,
+                  String groundImageURL,
+                  String groundAddress,
+                  String groundDescription,
+                  String groundAvailableStatus,
+                  String price)
     {
         GroundId = groundId;
         GroundName = groundName;

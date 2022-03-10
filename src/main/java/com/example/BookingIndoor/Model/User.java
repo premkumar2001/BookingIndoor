@@ -3,32 +3,34 @@ package com.example.BookingIndoor.Model;
 import javax.persistence.*;
 
 @Entity
-@Table(name="customerreglog")
-public class UserModel {
+@Table(name="user")
+public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String f_name;
-    private String l_name;
+    @GeneratedValue
+    private Integer id;
+
+    private String name;
     @Column(unique = true)
     private String mailId;
+    @Column(unique = true)
     private String mobNo;
     private String password;
+    private String roles;
 
-    public UserModel() {
+
+    public User() {
     }
 
-    public UserModel(Integer id, String f_name, String l_name, String mailId, String mobNo, String password) {
+    public User(String name, String mailId, String mobNo, String password,String roles) {
         this.id = id;
-        this.f_name = f_name;
-        this.l_name = l_name;
-
+        this.name = name;
         this.mailId = mailId;
         this.mobNo = mobNo;
         this.password = password;
+        this.roles=roles;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -36,20 +38,12 @@ public class UserModel {
         this.id = id;
     }
 
-    public String getF_name() {
-        return f_name;
+    public String getName() {
+        return name;
     }
 
-    public void setF_name(String f_name) {
-        this.f_name = f_name;
-    }
-
-    public String getL_name() {
-        return l_name;
-    }
-
-    public void setL_name(String l_name) {
-        this.l_name = l_name;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getMailId() {
@@ -76,5 +70,11 @@ public class UserModel {
         this.password = password;
     }
 
+    public String getRoles() {
+        return roles;
+    }
 
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
 }

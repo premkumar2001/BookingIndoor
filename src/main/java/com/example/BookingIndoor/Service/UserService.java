@@ -1,14 +1,23 @@
 package com.example.BookingIndoor.Service;
 
-import com.example.BookingIndoor.Model.UserModel;
+import com.example.BookingIndoor.Model.User;
 import com.example.BookingIndoor.Repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
 
+
 @Service
+@Configurable
 public class UserService {
+    @Autowired
     UserRepository repo;
 
-    public void saveUser(UserModel lm) {
-        repo.save(lm);
+    public User saveUser(User lm) {
+        return repo.save(lm);
+    }
+
+    public void saveAdmin(User um) {
+        repo.save(um);
     }
 }

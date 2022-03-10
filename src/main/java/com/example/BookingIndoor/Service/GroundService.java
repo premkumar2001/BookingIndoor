@@ -1,6 +1,6 @@
 package com.example.BookingIndoor.Service;
 
-import com.example.BookingIndoor.Model.GroundModel;
+import com.example.BookingIndoor.Model.Ground;
 import com.example.BookingIndoor.Repository.GroundRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
@@ -17,15 +17,15 @@ public class GroundService {
     @Autowired
     private GroundRepository repo;
 
-    public List<GroundModel> availableGround() {
+    public List<Ground> availableGround() {
         return repo.findAll();
     }
 
-    public GroundModel saveGround(GroundModel gm) {
+    public Ground saveGround(Ground gm) {
         return repo.save(gm);
     }
 
-    public GroundModel editGround(GroundModel gm) {
+    public Ground editGround(Ground gm) {
         return repo.save(gm);
     }
 
@@ -34,7 +34,7 @@ public class GroundService {
         repo.deleteById(id);
     }
 
-    public Optional<GroundModel> finByGroundId(Long id) {
+    public Optional<Ground> finByGroundId(Long id) {
         return repo.findById(id);
     }
 }
