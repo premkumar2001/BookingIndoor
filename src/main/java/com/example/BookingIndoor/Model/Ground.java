@@ -30,11 +30,11 @@ public class Ground {
                   String groundAvailableStatus,
                   String price)
     {
-        GroundId = groundId;
-        GroundName = groundName;
-        GroundImageURL = groundImageURL;
-        GroundAddress = groundAddress;
-        GroundDescription = groundDescription;
+        this.GroundId = groundId;
+        this.GroundName = groundName;
+        this.GroundImageURL = groundImageURL;
+        this.GroundAddress = groundAddress;
+        this.GroundDescription = groundDescription;
         this.groundAvailableStatus = groundAvailableStatus;
         this.price = price;
     }

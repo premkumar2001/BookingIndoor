@@ -1,6 +1,8 @@
 package com.example.BookingIndoor.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="user")
@@ -16,11 +18,16 @@ public class User {
     private String mobNo;
     private String password;
     private String roles;
-
+    @OneToMany(mappedBy = "user",
+            cascade =CascadeType.ALL,
+    orphanRemoval = true)
+private List<BookingGround> bookings;
 
     public User() {
     }
-
+public User(String name){
+        this.name=name;
+}
     public User(String name, String mailId, String mobNo, String password,String roles) {
         this.id = id;
         this.name = name;
@@ -28,6 +35,15 @@ public class User {
         this.mobNo = mobNo;
         this.password = password;
         this.roles=roles;
+
+    }
+
+    public List<BookingGround> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<BookingGround> bookings) {
+        this.bookings = bookings;
     }
 
     public Integer getId() {
