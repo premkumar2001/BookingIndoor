@@ -1,32 +1,36 @@
 package com.example.BookingIndoor.Model;
 
 
-import javax.persistence.Entity;
-        import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="bookinggrounddetails")
+@Table(name="bookingground")
 public class BookingGround {
     @Id
-    //private int id;
+    private int bookingid;
     private String groundName;
     private String address;
     private String noOfPersons;
     private Date fromDate;
     private Date todate;
     private String totalPrice;
-
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
     public BookingGround() {
     }
 
-    public BookingGround(String groundName,
+    public BookingGround(
+            int bookingid,
+            String groundName,
                          String address,
                          String noOfPersons,
                          Date fromDate,
                          Date todate,
-                         String totalPrice) {
+                         String totalPrice,
+    User user) {
+        this.bookingid=bookingid;
         this.groundName = groundName;
         this.address = address;
         this.noOfPersons = noOfPersons;
@@ -35,6 +39,21 @@ public class BookingGround {
         this.totalPrice = totalPrice;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public int getBookingid() {
+        return bookingid;
+    }
+
+    public void setBookingid(int bookingid) {
+        this.bookingid = bookingid;
+    }
     public String getGroundName() {
         return groundName;
     }
